@@ -15,7 +15,7 @@
     }
 
     operation Run(name : String, fn: (Unit => (Bool, Bool))) : Double {
-        let runs = 100;
+        let runs = 4096;
         mutable zerozero = 0;
         mutable zeroone = 0;
         mutable onezero = 0;
@@ -54,9 +54,7 @@
             CNOT(q1, q2);
 
             Rz(PI() / 3.0, q2);
-            H(q1);
-            H(q2);
-            return (MResetZ(q1) == One, MResetZ(q2) == One);
+            return (MResetX(q1) == One, MResetX(q2) == One);
         }
     }
 
@@ -69,9 +67,7 @@
             CNOT(q1, q2);
 
             Rz(2.0 * PI() / 3.0, q2);
-            H(q1);
-            H(q2);
-            return (MResetZ(q1) == One, MResetZ(q2) == One);
+            return (MResetX(q1) == One, MResetX(q2) == One);
         }
     }
 
@@ -85,10 +81,7 @@
 
             Rz(PI() / 3.0, q1);
             Rz(2.0 * PI() / 3.0, q2);
-            H(q1);
-            H(q2);
-            return (MResetZ(q1) == One, MResetZ(q2) == One);
+            return (MResetX(q1) == One, MResetX(q2) == One);
         }
     }
 }
-
