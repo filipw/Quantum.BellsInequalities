@@ -8,9 +8,9 @@
 
     @EntryPoint()
     operation Main() : Unit {
-            let p1 = Run("P(a,b)", BellsInequalityA);
-            let p2 = Run("P(a,c)", BellsInequalityB);
-            let p3 = Run("P(b,c)", BellsInequalityC);
+            let p1 = Run("P(a,b)", BellsInequalityAB);
+            let p2 = Run("P(a,c)", BellsInequalityAC);
+            let p3 = Run("P(b,c)", BellsInequalityBC);
             Message("|P(a,b)−P(a,c)| − P(b,c) ≤ 1, (if lower than 1, then EPR was right): " + DoubleAsString(AbsD(p1 - p2) - p3));
     }
 
@@ -45,7 +45,7 @@
         return p;
     }
 
-    operation BellsInequalityA() : (Bool, Bool) {
+    operation BellsInequalityAB() : (Bool, Bool) {
         using ((q1, q2) = (Qubit(), Qubit())) {
             X(q1);
             X(q2);
@@ -58,7 +58,7 @@
         }
     }
 
-    operation BellsInequalityB() : (Bool, Bool) {
+    operation BellsInequalityAC() : (Bool, Bool) {
         using ((q1, q2) = (Qubit(), Qubit())) {
             X(q1);
             X(q2);
@@ -71,7 +71,7 @@
         }
     }
 
-    operation BellsInequalityC() : (Bool, Bool) {
+    operation BellsInequalityBC() : (Bool, Bool) {
         using ((q1, q2) = (Qubit(), Qubit())) {
             X(q1);
             X(q2);
