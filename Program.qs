@@ -11,7 +11,7 @@
             let p1 = Run("P(a,b)", BellsInequalityA);
             let p2 = Run("P(a,c)", BellsInequalityB);
             let p3 = Run("P(b,c)", BellsInequalityC);
-            Message("|P(a,b)−P(a,c)| − P(b,c) ≤ 1, (if lower than 1, then EPR was right): " + DoubleAsString(-(p1 - p2) - p3));
+            Message("|P(a,b)−P(a,c)| − P(b,c) ≤ 1, (if lower than 1, then EPR was right): " + DoubleAsString(AbsD(p1 - p2) - p3));
     }
 
     operation Run(name : String, fn: (Unit => (Bool, Bool))) : Double {
