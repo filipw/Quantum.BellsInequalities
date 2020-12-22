@@ -9,10 +9,11 @@
 
     @EntryPoint()
     operation Main() : Unit {
-            let p1 = Run("P(a,b)", BellsInequalityAB);
-            let p2 = Run("P(a,c)", BellsInequalityAC);
-            let p3 = Run("P(b,c)", BellsInequalityBC);
-            Message("|P(a,b)−P(a,c)| − P(b,c) ≤ 1, (if lower than 1, then EPR was right): " + DoubleAsString(AbsD(p1 - p2) - p3));
+            let p_ab = Run("P(a,b)", BellsInequalityAB);
+            let p_ac = Run("P(a,c)", BellsInequalityAC);
+            let p_bc = Run("P(b,c)", BellsInequalityBC);
+            Message($"Bell's inequality |P(a,b)−P(a,c)| − P(b,c) ≤ 1, (if larger than 1, then no local hidden variable theory can reproduce QM predictions)");
+            Message($"Experimental result: {DoubleAsString(AbsD(p_ab - p_ac) - p_bc)}");
     }
 
     operation Run(name : String, fn: (Unit => (Bool, Bool))) : Double {
